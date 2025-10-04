@@ -936,12 +936,13 @@ class AppMenu::RecentTabsMenuModelDelegate : public ui::MenuModelDelegate {
   // ui::MenuModelDelegate implementation:
 
   void OnIconChanged(int command_id) override {
-    ui::MenuModel* model = model_;
-    size_t index;
-    model_->GetModelAndIndexForCommandId(command_id, &model, &index);
-    views::MenuItemView* item = menu_item_->GetMenuItemByID(command_id);
-    DCHECK(item);
-    item->SetIcon(model->GetIconAt(index));
+    // Icons removed from menu items for cleaner UI
+    // ui::MenuModel* model = model_;
+    // size_t index;
+    // model_->GetModelAndIndexForCommandId(command_id, &model, &index);
+    // views::MenuItemView* item = menu_item_->GetMenuItemByID(command_id);
+    // DCHECK(item);
+    // item->SetIcon(model->GetIconAt(index));
   }
 
   void OnMenuStructureChanged() override {
@@ -1660,9 +1661,10 @@ MenuItemView* AppMenu::AddMenuItem(MenuItemView* parent,
   if (menu_item) {
     menu_item->SetVisible(model->IsVisibleAt(model_index));
 
-    if (menu_type == MenuModel::TYPE_COMMAND) {
-      menu_item->SetIcon(model->GetIconAt(model_index));
-    }
+    // Icons removed from menu items for cleaner UI
+    // if (menu_type == MenuModel::TYPE_COMMAND) {
+    //   menu_item->SetIcon(model->GetIconAt(model_index));
+    // }
   }
 
   return menu_item;
